@@ -42,7 +42,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-slate-800/90 bg-slate-950/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <a href="#home" className="text-lg font-semibold tracking-[0.2em] text-cyan-300 uppercase">
-          NF
+          NFANSU BARROW
         </a>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
