@@ -1,0 +1,58 @@
+export const certificates = [
+  {
+    title: 'Computer Vision (Kaggle)',
+    issuer: 'Kaggle',
+    description: 'Practical introduction to image processing, CNNs, and object recognition using real datasets.',
+    date: '2024',
+    link: '#',
+  },
+  {
+    title: 'Deep Learning (Kaggle)',
+    issuer: 'Kaggle',
+    description: 'Covered optimization of deep neural networks, activation functions, transfer learning, and practical model use.',
+    date: '2024',
+    link: '#',
+  },
+  {
+    title: 'Machine Learning (Kaggle)',
+    issuer: 'Kaggle',
+    description: 'Introduced supervised and unsupervised learning, model evaluation, and predictive modeling with scikit-learn.',
+    date: '2024',
+    link: '#',
+  },
+  {
+    title: 'MATLAB Onramp Completion',
+    issuer: 'MathWorks',
+    description: 'Fundamental training in MATLAB, including scripting, analysis, and scientific problem solving.',
+    date: '2024',
+    link: '#',
+  },
+  {
+    title: 'Responsive Web Design',
+    issuer: 'FreeCodeCamp',
+    description: 'Training in responsive layout design, accessibility, and modern front-end fundamentals.',
+    date: '2024',
+    link: '#',
+  },
+  {
+    title: 'GASAM Treasurer Recognition',
+    issuer: 'GASAM',
+    description: 'Leadership recognition for serving as treasurer and contributing to the association.',
+    date: '2025',
+    link: '#',
+  },
+  {
+    title: 'Maths & Science Club Executive Member',
+    issuer: 'St. Peter’s Technical Senior High School',
+    description: 'Recognition for active participation and leadership within the Maths & Science Club.',
+    date: '2021',
+    link: '#',
+  },
+  {
+    title: 'Health Awareness Training Completion',
+    issuer: 'Health professionals',
+    description: 'Completion certificate for training focused on nutrition, health risks, and community awareness.',
+    date: 'High school',
+    link: '#',
+  },
+]
