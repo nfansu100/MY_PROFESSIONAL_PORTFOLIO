@@ -1,3 +1,11 @@
+import handTrackingGesture from '../assets/videos/demos/handTrackingGesture.mp4'
+import ledControl from '../assets/videos/demos/ledControl.mp4'
+import obstacleDetection from '../assets/videos/demos/obstacleDetection.mp4'
+import vehicleManagement from '../assets/videos/demos/vehicleManagement.mp4'
+import vehicleTracking from '../assets/videos/demos/vehicleTracking.mp4'
+import volumeGesture from '../assets/videos/demos/volumeGesture.mp4'
+import wifiWebServer from '../assets/videos/demos/wifiWebServer.mp4'
+
 export const projects = [
   {
     title: 'Vehicle Tracking Project',
@@ -6,7 +14,7 @@ export const projects = [
       'A computer vision project focused on tracking moving vehicles using image-processing workflows and real-time detection techniques.',
     technologies: ['Python', 'OpenCV', 'Computer Vision', 'Tracking'],
     featured: true,
-    demo: '#',
+    demo: vehicleTracking,
     github: '#',
   },
   {
@@ -16,7 +24,7 @@ export const projects = [
       'Explores hand tracking and gesture recognition as an interaction model for human-computer interaction and real-time control.',
     technologies: ['Python', 'OpenCV', 'Gesture Recognition', 'Vision'],
     featured: true,
-    demo: '#',
+    demo: handTrackingGesture,
     github: '#',
   },
   {
@@ -26,7 +34,7 @@ export const projects = [
       'A practical project combining visual gesture detection with device control to demonstrate interaction between AI and accessible human interfaces.',
     technologies: ['Python', 'OpenCV', 'Computer Vision', 'Automation'],
     featured: true,
-    demo: '#',
+    demo: volumeGesture,
     github: '#',
   },
   {
@@ -36,7 +44,7 @@ export const projects = [
       'An ESP32-based web server project showcasing connected-device control and embedded web interfaces.',
     technologies: ['ESP32', 'Wi-Fi', 'Embedded Systems', 'Web Server'],
     featured: false,
-    demo: '#',
+    demo: wifiWebServer,
     github: '#',
   },
   {
@@ -46,7 +54,7 @@ export const projects = [
       'A hardware-focused embedded project centered on sensing and detecting obstacles in a compact, practical system design.',
     technologies: ['ESP32', 'Sensors', 'Embedded Systems', 'IoT'],
     featured: false,
-    demo: '#',
+    demo: obstacleDetection,
     github: '#',
   },
   {
@@ -56,7 +64,7 @@ export const projects = [
       'A simple embedded control project demonstrating microcontroller-driven device interaction and remote control concepts.',
     technologies: ['ESP32', 'Embedded C', 'IoT', 'Control'],
     featured: false,
-    demo: '#',
+    demo: ledControl,
     github: '#',
   },
   {
@@ -66,7 +74,7 @@ export const projects = [
       'A hospital parking management system designed to improve vehicle entry and parking operations using computer vision and workflow automation.',
     technologies: ['Computer Vision', 'Python', 'Web App', 'Operations'],
     featured: true,
-    demo: '#',
+    demo: vehicleManagement,
     github: '#',
   },
   {

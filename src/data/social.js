@@ -10,8 +10,8 @@ export const socialLinks = [
     type: 'portfolio',
   },
   {
-    label: 'CV',
-    href: 'https://nfansu100.github.io/portfolio/myData/myCVs/English%20Version.pdf',
-    type: 'cv',
-  },
+    label: "LinkedLn",
+    href: "https://www.linkedin.com/in/nfansu-o-barrow-326397304/",
+    type: "linkedLn"
+  }
 ]
