@@ -1,71 +1,106 @@
-import { Cpu, GraduationCap, Sparkles } from 'lucide-react'
+import { ArrowUpRight, Download, FileText } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { aboutProfile, areasOfInterest, curriculumVitae, technicalFocus } from '../../data/about'
 import SectionHeading from '../common/SectionHeading'
 
 export default function About() {
+  const reduceMotion = useReducedMotion()
+
   return (
-    <section id="about" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
-      <SectionHeading
-        eyebrow="About"
-        title="Engineering student focused on intelligent embedded systems"
-        description="I am a dedicated Embedded Systems and AI engineering student passionate about bridging hardware and software into practical, high-impact solutions."
-      />
+    <motion.section
+      id="about"
+      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: reduceMotion ? 0 : 0.45, ease: 'easeOut' }}
+      className="relative border-t border-white/10 bg-slate-900/35 py-20"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="About"
+          title="Final-year Master’s student in Embedded Systems & AI Engineering"
+          description="At ENSAF, Fès, I work at the intersection of embedded computing and artificial intelligence."
+        />
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-6 text-base leading-7 text-slate-300">
-          <p>
-            Hello, I’m Nfansu O Barrow, a student currently pursuing a specialization in Embedded
-            Systems and AI Engineering at ENSAF in Fès. My work is centered on designing systems
-            that combine embedded computing, computer vision, machine learning, and real-time
-            performance.
-          </p>
-          <p>
-            I am especially interested in embedded systems development, AI-driven applications,
-            computer vision, machine learning, and edge computing. My projects and academic work
-            have allowed me to explore practical design processes across multiple domains, from
-            embedded hardware to intelligent software pipelines.
-          </p>
-          <p>
-            Through internship experience and academic projects, I have developed a strong interest
-            in creating solutions that are not only technically useful but also relevant to real
-            operational needs, including healthcare, vision-based automation, and connected devices.
-          </p>
-        </div>
-
-        <div className="space-y-5">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
-            <div className="mb-3 flex items-center gap-3 text-cyan-300">
-              <GraduationCap size={18} />
-              <span className="font-semibold text-white">Academic direction</span>
+        <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] lg:gap-16">
+          <div>
+            <div className="border-l-2 border-cyan-300/70 pl-5 sm:pl-6">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">
+                Professional profile
+              </h3>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+                {aboutProfile.summary}
+              </p>
             </div>
-            <p className="text-sm leading-6 text-slate-300">
-              Specialized engineering path in Embedded Systems and AI, with a strong focus on
-              intelligent system design and deployment.
-            </p>
+
+            <div className="mt-10">
+              <h3 className="text-lg font-semibold text-white">Technical Focus</h3>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                {technicalFocus.map((item) => (
+                  <li
+                    key={item}
+                    className="flex min-h-14 items-center gap-3 border-b border-slate-700/70 px-1 py-3 text-sm font-medium text-slate-200"
+                  >
+                    <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
-            <div className="mb-3 flex items-center gap-3 text-cyan-300">
-              <Cpu size={18} />
-              <span className="font-semibold text-white">Current focus</span>
+          <aside className="space-y-10">
+            <div>
+              <h3 className="text-lg font-semibold text-white">Areas of Interest</h3>
+              <ul className="mt-3 divide-y divide-slate-700/70 border-y border-slate-700/70">
+                {areasOfInterest.map((interest, index) => (
+                  <li key={interest} className="flex items-center gap-4 py-3.5">
+                    <span className="font-mono text-xs text-cyan-300">0{index + 1}</span>
+                    <span className="text-sm text-slate-200">{interest}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-sm leading-6 text-slate-300">
-              Embedded Linux, computer vision, edge AI, Raspberry Pi, ESP32-based projects, and
-              practical engineering problem solving.
-            </p>
-          </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
-            <div className="mb-3 flex items-center gap-3 text-cyan-300">
-              <Sparkles size={18} />
-              <span className="font-semibold text-white">Engineering approach</span>
+            <div className="border-t border-slate-700/70 pt-6">
+              <div className="flex items-start gap-3">
+                <FileText className="mt-0.5 shrink-0 text-cyan-300" size={19} aria-hidden="true" />
+                <div>
+                  <h3 className="font-semibold text-white">Curriculum Vitae</h3>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">
+                    View or download my CV in English or French.
+                  </p>
+                </div>
+              </div>
+
+              <ul className="mt-4 divide-y divide-slate-700/70">
+                {curriculumVitae.map((cv) => (
+                  <li key={cv.language} className="flex flex-wrap items-center justify-between gap-3 py-3">
+                    <span className="text-sm font-medium text-slate-200">{cv.language}</span>
+                    <div className="flex items-center gap-4">
+                      <a
+                        href={cv.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-200 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"
+                      >
+                        View <ArrowUpRight size={15} aria-hidden="true" />
+                      </a>
+                      <a
+                        href={cv.url}
+                        download={cv.fileName}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-300 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"
+                      >
+                        Download <Download size={15} aria-hidden="true" />
+                      </a>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-sm leading-6 text-slate-300">
-              I value hands-on learning, experimentation, and building systems that connect real
-              hardware with meaningful data-driven intelligence.
-            </p>
-          </div>
+          </aside>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
