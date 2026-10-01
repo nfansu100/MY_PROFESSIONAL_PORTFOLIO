@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+.env*
+!.env.example
 
 # Generated certificate preview files
 src/assets/documents/certificates/*_page-*.jpg
