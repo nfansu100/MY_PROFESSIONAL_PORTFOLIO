@@ -10,6 +10,7 @@ import IslamicCertification from '../assets/documents/certificates/IslamicCertif
 
 export const certificates = [
   {
+    id: 'computer-vision-kaggle',
     title: 'Computer Vision (Kaggle)',
     issuer: 'Kaggle',
     description: 'Practical introduction to image processing, CNNs, and object recognition using real datasets.',
@@ -17,6 +18,7 @@ export const certificates = [
     link: computerVision,
   },
   {
+    id: 'deep-learning-kaggle',
     title: 'Deep Learning (Kaggle)',
     issuer: 'Kaggle',
     description: 'Covered optimization of deep neural networks, activation functions, transfer learning, and practical model use.',
@@ -24,6 +26,7 @@ export const certificates = [
     link: deepLearning,
   },
   {
+    id: 'machine-learning-kaggle',
     title: 'Machine Learning (Kaggle)',
     issuer: 'Kaggle',
     description: 'Introduced supervised and unsupervised learning, model evaluation, and predictive modeling with scikit-learn.',
@@ -31,6 +34,7 @@ export const certificates = [
     link: machineLearning,
   },
   {
+    id: 'matlab-onramp',
     title: 'MATLAB Onramp Completion',
     issuer: 'MathWorks',
     description: 'Fundamental training in MATLAB, including scripting, analysis, and scientific problem solving.',
@@ -38,6 +42,7 @@ export const certificates = [
     link: matlabCertificate,
   },
   {
+    id: 'responsive-web-design',
     title: 'Responsive Web Design',
     issuer: 'FreeCodeCamp',
     description: 'Training in responsive layout design, accessibility, and modern front-end fundamentals.',
@@ -45,6 +50,7 @@ export const certificates = [
     link: responsiveWebDesign,
   },
   {
+    id: 'gasam-treasurer',
     title: 'GASAM Treasurer Recognition',
     issuer: 'GASAM',
     description: 'Leadership recognition for serving as treasurer and contributing to the association.',
@@ -52,6 +58,7 @@ export const certificates = [
     link: gasamTreasurer,
   },
   {
+    id: 'maths-science-club',
     title: 'Maths & Science Club Executive Member',
     issuer: 'St. Peter’s Technical Senior High School',
     description: 'Recognition for active participation and leadership within the Maths & Science Club.',
@@ -59,6 +66,7 @@ export const certificates = [
     link: mathsClub,
   },
   {
+    id: 'health-awareness',
     title: 'Health Awareness Training Completion',
     issuer: 'Health professionals',
     description: 'Completion certificate for training focused on nutrition, health risks, and community awareness.',
@@ -66,10 +74,11 @@ export const certificates = [
     link: healthTraining,
   },
   {
+    id: 'quranic-competition',
     title: 'Gasam Quaranic Competition',
     issuer: 'Gasam Arabic Students',
     description: 'Recognition I received for participating in the Quranic competition.',
     date: '2024',
     link: IslamicCertification,
-  }
+  },
 ]
