@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight, GitBranch, Play } from 'lucide-react'
 import Badge from '../common/Badge'
 
-export default function ProjectCard({ project, onOpenDemo }) {
+export default function ProjectCard({ project, onOpenDemo, onOpenDetails }) {
   const hasImage = Boolean(project.image)
 
   return (
@@ -61,7 +61,7 @@ export default function ProjectCard({ project, onOpenDemo }) {
           </div>
         </div>
 
-        <p className="text-sm leading-7 text-slate-300">{project.description}</p>
+        <p className="text-sm leading-7 text-slate-300">{project.summary || project.description}</p>
 
         <div className="mt-5 flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
@@ -87,16 +87,27 @@ export default function ProjectCard({ project, onOpenDemo }) {
           <span className="text-sm text-slate-500">Private</span>
         )}
 
-        {project.demo !== '#' ? (
+        <div className="ml-auto flex items-center gap-2">
           <button
             type="button"
-            onClick={() => onOpenDemo(project)}
-            className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 bg-cyan-500/5 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-200 transition-all duration-200 hover:border-cyan-300/60 hover:bg-cyan-500/10 hover:text-cyan-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+            onClick={() => onOpenDetails(project)}
+            className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 bg-cyan-500/5 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-cyan-200 transition-all duration-200 hover:border-cyan-300/60 hover:bg-cyan-500/10 hover:text-cyan-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
           >
-            Demo
+            Explore Project
             <ArrowUpRight size={15} aria-hidden="true" />
           </button>
-        ) : null}
+
+          {project.demo !== '#' ? (
+            <button
+              type="button"
+              onClick={() => onOpenDemo(project)}
+              className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 bg-cyan-500/5 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-cyan-200 transition-all duration-200 hover:border-cyan-300/60 hover:bg-cyan-500/10 hover:text-cyan-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+            >
+              Demo
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </button>
+          ) : null}
+        </div>
       </div>
     </motion.article>
   )
