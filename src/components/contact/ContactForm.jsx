@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Check } from 'lucide-react'
 import { contactInfo } from '../../data/social'
 
@@ -28,10 +29,10 @@ const validateField = (field, value) => {
 }
 
 const inputClassName = (hasError) =>
-  `mt-2 block w-full rounded-md border px-3.5 py-3 text-sm text-slate-950 outline-none transition-colors placeholder:text-slate-500 focus-visible:ring-2 focus-visible:ring-cyan-700 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 ${
+  `mt-2 block w-full rounded-xl border px-3.5 py-3 text-sm text-slate-950 outline-none transition-all duration-200 placeholder:text-slate-500 focus-visible:ring-2 focus-visible:ring-cyan-700 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 ${
     hasError
-      ? 'border-rose-600 bg-rose-50'
-      : 'border-slate-300 bg-white hover:border-slate-400 focus-visible:border-cyan-700'
+      ? 'border-rose-600 bg-rose-50 shadow-[0_0_0_4px_rgba(225,29,72,0.06)]'
+      : 'border-slate-300 bg-white shadow-sm hover:border-slate-400 focus-visible:border-cyan-700'
   }`
 
 function ContactField({ field, value, error, onChange }) {
@@ -80,10 +81,21 @@ function ContactField({ field, value, error, onChange }) {
 export default function ContactForm() {
   const formRef = useRef(null)
   const submissionLock = useRef(false)
+  const reduceMotion = useReducedMotion()
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState({})
   const [submission, setSubmission] = useState({ state: 'idle', message: '' })
   const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT?.trim()
+
+  useEffect(() => {
+    if (submission.state !== 'success') return undefined
+
+    const timer = window.setTimeout(() => {
+      setSubmission({ state: 'idle', message: '' })
+    }, 5000)
+
+    return () => window.clearTimeout(timer)
+  }, [submission.state])
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -143,7 +155,7 @@ export default function ContactForm() {
       formRef.current?.reset()
       setSubmission({
         state: 'success',
-        message: 'Your message has been sent successfully. Thank you for reaching out.',
+        message: 'Message sent successfully. Thank you for reaching out.',
       })
     } catch {
       setSubmission({
@@ -157,49 +169,76 @@ export default function ContactForm() {
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} noValidate className="mt-6 space-y-4">
-      <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
-        <label htmlFor="contact-company">Leave this field empty</label>
-        <input id="contact-company" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        {fields.map((field) => (
-          <ContactField
-            key={field.name}
-            field={field}
-            value={values[field.name]}
-            error={errors[field.name]}
-            onChange={handleChange}
-          />
-        ))}
-      </div>
-
-      <div className="flex flex-col gap-3 border-t border-slate-200 pt-4 sm:flex-row sm:items-center sm:justify-between">
-        <button
-          type="submit"
-          disabled={submission.state === 'sending'}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-cyan-950 active:translate-y-0 disabled:cursor-wait disabled:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-800"
-        >
-          {submission.state === 'sending' ? 'Sending...' : 'Send message'}
-          {submission.state === 'success' ? <Check size={16} aria-hidden="true" /> : <ArrowUpRight size={16} aria-hidden="true" />}
-        </button>
-        <p className="text-xs leading-5 text-slate-500">Your details are used only to respond to your message.</p>
-      </div>
-
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        role={submission.state === 'error' ? 'alert' : undefined}
-        className={`text-sm leading-6 ${submission.state === 'success' ? 'text-emerald-800' : submission.state === 'error' ? 'text-rose-800' : 'sr-only'}`}
-      >
-        {submission.message}
-        {submission.state === 'error' ? (
-          <a className="ml-1 font-semibold underline underline-offset-2" href={`mailto:${contactInfo.email}`}>
-            {contactInfo.email}
-          </a>
+    <>
+      <AnimatePresence>
+        {submission.state === 'success' ? (
+          <motion.div
+            key="contact-success-toast"
+            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: -12, scale: 0.98 }}
+            animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
+            role="status"
+            aria-live="polite"
+            className="pointer-events-none fixed right-4 top-4 z-50 w-[min(92vw,22rem)]"
+          >
+            <div className="flex items-start gap-3 rounded-2xl border border-emerald-400/40 bg-slate-900/95 px-4 py-3 text-left shadow-[0_18px_40px_rgba(16,185,129,0.18)] backdrop-blur-sm">
+              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">
+                <Check size={15} aria-hidden="true" />
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-white">Message sent successfully</p>
+                <p className="mt-1 text-xs leading-5 text-slate-300">Thank you for reaching out.</p>
+              </div>
+            </div>
+          </motion.div>
         ) : null}
-      </div>
-    </form>
+      </AnimatePresence>
+
+      <form ref={formRef} onSubmit={handleSubmit} noValidate className="mt-6 space-y-4">
+        <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
+          <label htmlFor="contact-company">Leave this field empty</label>
+          <input id="contact-company" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {fields.map((field) => (
+            <ContactField
+              key={field.name}
+              field={field}
+              value={values[field.name]}
+              error={errors[field.name]}
+              onChange={handleChange}
+            />
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-slate-200 pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <button
+            type="submit"
+            disabled={submission.state === 'sending'}
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(15,23,42,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyan-950 active:translate-y-0 disabled:cursor-wait disabled:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-800"
+          >
+            {submission.state === 'sending' ? 'Sending...' : 'Send message'}
+            {submission.state === 'success' ? <Check size={16} aria-hidden="true" /> : <ArrowUpRight size={16} aria-hidden="true" />}
+          </button>
+          <p className="text-xs leading-5 text-slate-500">Your details are used only to respond to your message.</p>
+        </div>
+
+        <div
+          aria-live="polite"
+          aria-atomic="true"
+          role={submission.state === 'error' ? 'alert' : undefined}
+          className={`text-sm leading-6 ${submission.state === 'success' ? 'text-emerald-800' : submission.state === 'error' ? 'text-rose-800' : 'sr-only'}`}
+        >
+          {submission.message}
+          {submission.state === 'error' ? (
+            <a className="ml-1 font-semibold underline underline-offset-2" href={`mailto:${contactInfo.email}`}>
+              {contactInfo.email}
+            </a>
+          ) : null}
+        </div>
+      </form>
+    </>
   )
 }
