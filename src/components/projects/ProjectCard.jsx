@@ -3,6 +3,8 @@ import { ArrowUpRight, GitBranch, Play } from 'lucide-react'
 import Badge from '../common/Badge'
 
 export default function ProjectCard({ project, onOpenDemo }) {
+  const hasImage = Boolean(project.image)
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 18 }}
@@ -25,6 +27,17 @@ export default function ProjectCard({ project, onOpenDemo }) {
             </span>
           ) : null}
         </div>
+
+        {hasImage ? (
+          <div className="relative mb-5 overflow-hidden rounded-2xl border border-slate-800/90 bg-slate-950/80">
+            <img
+              src={project.image}
+              alt={`${project.title} project preview`}
+              className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-900/20" aria-hidden="true" />
+          </div>
+        ) : null}
 
         <div className="relative mb-5 overflow-hidden rounded-2xl border border-slate-800/90 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.18),transparent_35%),linear-gradient(135deg,rgba(15,23,42,0.8),rgba(15,23,42,0.95))] p-4">
           <div className="absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(34,211,238,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.05)_1px,transparent_1px)] [background-size:22px_22px]" aria-hidden="true" />
