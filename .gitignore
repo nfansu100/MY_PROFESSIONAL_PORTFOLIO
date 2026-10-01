@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Generated certificate preview files
+src/assets/documents/certificates/*_page-*.jpg
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
