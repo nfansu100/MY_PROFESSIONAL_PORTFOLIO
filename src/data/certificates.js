@@ -4,9 +4,9 @@ import gasamTreasurer from '../assets/documents/certificates/GasamCertificateTre
 import healthTraining from '../assets/documents/certificates/healthTraining.jpg'
 import machineLearning from '../assets/documents/certificates/machineLearning.png'
 import mathsClub from '../assets/documents/certificates/mathsClub.jpg'
-import matlabCertificate from '../assets/documents/certificates/matlabCertificate.pdf'
+import matlabCertificate from '../assets/documents/certificates/matlabCertificate.jpg'
 import responsiveWebDesign from '../assets/documents/certificates/responsiveWebDesign.png'
-import IslamicCertification from '../assets/documents/certificates/IslamicCertification.pdf'
+import IslamicCertification from '../assets/documents/certificates/IslamicCertification.jpg'
 
 export const certificates = [
   {
