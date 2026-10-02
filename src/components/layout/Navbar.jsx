@@ -21,42 +21,62 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id]')
+    const sections = Array.from(document.querySelectorAll('section[id]'))
 
     if (!sections.length) {
       return undefined
     }
 
+    const findActiveSection = () => {
+      const referenceTop = 110
+      let closestSection = sections[0]
+      let closestDistance = Number.POSITIVE_INFINITY
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect()
+
+        if (rect.bottom <= 0 || rect.top >= window.innerHeight) {
+          continue
+        }
+
+        const distance = Math.abs(rect.top - referenceTop)
+
+        if (distance < closestDistance) {
+          closestDistance = distance
+          closestSection = section
+        }
+      }
+
+      if (closestSection) {
+        setActiveSection(closestSection.id)
+      }
+    }
+
     const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries.filter(
-          (entry) => entry.isIntersecting && entry.intersectionRatio > 0.12,
-        )
-
-        if (!visibleEntries.length) {
-          return
-        }
-
-        const nextSection = visibleEntries
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-          .sort(
-            (a, b) =>
-              Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top),
-          )[0]
-
-        if (nextSection) {
-          setActiveSection(nextSection.target.id)
-        }
+      () => {
+        findActiveSection()
       },
       {
-        rootMargin: '-18% 0px -52% 0px',
+        rootMargin: '-12% 0px -48% 0px',
         threshold: [0.15, 0.35, 0.55, 0.8],
       },
     )
 
     sections.forEach((section) => observer.observe(section))
+    findActiveSection()
 
-    return () => observer.disconnect()
+    const handleScroll = () => {
+      findActiveSection()
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
   }, [])
 
   useEffect(() => {
