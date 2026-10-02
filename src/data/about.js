@@ -13,7 +13,6 @@ export const technicalFocus = [
   'ML & Deep Learning',
   'Edge AI',
   'Real-Time Systems',
-  'Internet Of Things',
   'Control Systems'
 ]
 
@@ -22,7 +21,8 @@ export const areasOfInterest = [
   'Parallel Programming',
   'Real-Time Operating Systems',
   'Micro-electronics',
-  'Embedded Software Validation'
+  'Embedded Software Validation',
+  'Internet Of Things',
 ]
 
 export const curriculumVitae = [
