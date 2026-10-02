@@ -27,11 +27,10 @@ function App() {
       <Navbar />
 
       <main>
-        {navigation.map(({ href }) => {
-          const sectionId = href.replace('#', '')
-          const SectionComponent = sectionComponents[sectionId]
+        {navigation.map(({ id }) => {
+          const SectionComponent = sectionComponents[id]
 
-          return SectionComponent ? <SectionComponent key={href} /> : null
+          return SectionComponent ? <SectionComponent key={id} /> : null
         })}
       </main>
 
