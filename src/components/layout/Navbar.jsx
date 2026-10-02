@@ -105,7 +105,11 @@ export default function Navbar() {
     event.preventDefault()
 
     const section = document.getElementById(item.id)
-    if (section) {
+    const scrollToSection = () => {
+      if (!section) {
+        return
+      }
+
       const top = section.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
       window.history.pushState({}, '', item.href)
       window.scrollTo({
@@ -116,6 +120,13 @@ export default function Navbar() {
 
     setIsOpen(false)
     setActiveSection(item.id)
+
+    if (window.innerWidth < 768) {
+      window.setTimeout(scrollToSection, reduceMotion ? 0 : 180)
+      return
+    }
+
+    scrollToSection()
   }
 
   const onMenuToggle = () => {
