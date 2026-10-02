@@ -142,7 +142,7 @@ export default function About() {
       type === 'focus'
         ? {
             title: 'Technical Focus',
-            description: 'Technical domains I work across.',
+            description: 'Technical domains I aspire work across.',
             items: technicalFocus,
           }
         : {

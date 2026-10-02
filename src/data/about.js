@@ -3,24 +3,26 @@ import frenchCv from '../assets/documents/cv/My_Professional_French.pdf'
 
 export const aboutProfile = {
   summary:
-    'I’m Nfansu O Barrow, a final-year Master’s student in Embedded Systems & AI Engineering at ENSAF, Fès. My work bridges embedded computing and artificial intelligence, integrating hardware, software, and AI-driven processing. Academic projects and internship experience have exposed me to vision-based automation, connected systems, healthcare applications, and edge computing. I am interested in efficient, reliable systems built for real-world use.',
+    'I’m Nfansu O. Barrow, a final-year Master’s student in Embedded Systems & AI Engineering at ENSAF, Fès. My work bridges Embedded Computing and Artificial Intelligence, integrating hardware, software, and AI-driven processing. Academic projects and internship experience have exposed me to vision-based automation, connected systems, healthcare applications, and edge computing. I am interested in efficient, reliable systems built for real-world use.',
 }
 
 export const technicalFocus = [
   'Embedded Systems',
-  'Artificial Intelligence',
+  'Model Based Design',
   'Computer Vision',
-  'Machine Learning',
+  'ML & Deep Learning',
   'Edge AI',
   'Real-Time Systems',
-  'Connected Systems & IoT',
+  'Internet Of Things',
+  'Control Systems'
 ]
 
 export const areasOfInterest = [
-  'Embedded Systems',
-  'Computer Vision',
+  'System On Chip',
+  'Parallel Programming',
   'Real-Time Operating Systems',
-  'Machine Learning & Deep Learning',
+  'Micro-electronics',
+  'Embedded Software Validation'
 ]
 
 export const curriculumVitae = [
