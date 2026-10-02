@@ -37,7 +37,7 @@ export default function Home() {
         aria-hidden="true"
         fetchPriority="high"
         style={reduceMotion ? { opacity: 0 } : { scale: backgroundScale, opacity: backgroundOpacity }}
-        className="absolute inset-0 h-full w-full object-cover object-[50%_24%]"
+        className="absolute inset-0 h-full w-full object-cover object-[50%_24%] xl:object-[50%_0%]"
       />
       <motion.img
         src={homeVisuals.foreground.src}
@@ -49,7 +49,7 @@ export default function Home() {
             ? { clipPath: 'circle(150% at 50% 48%)' }
             : { clipPath: revealClip, scale: revealScale, y: revealY }
         }
-        className="absolute inset-0 h-full w-full origin-[68%_46%] object-cover object-[50%_24%]"
+        className="absolute inset-0 h-full w-full origin-[68%_46%] object-cover object-[50%_24%] xl:object-[50%_0%]"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/35 to-slate-950/15" />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-slate-950/10" />
