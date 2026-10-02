@@ -202,11 +202,11 @@ export default function Navbar() {
 
             <motion.aside
               id="mobile-navigation-drawer"
-              initial={{ x: '100%' }}
+              initial={{ x: '-100%' }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
+              exit={{ x: '-100%' }}
               transition={{ type: 'spring', stiffness: 280, damping: 28 }}
-              className="fixed right-0 top-0 z-50 h-full w-[82vw] max-w-sm border-l border-slate-800/90 bg-slate-950/95 shadow-[0_0_40px_rgba(15,23,42,0.55)] backdrop-blur-xl md:hidden"
+              className="fixed left-0 top-0 z-50 h-full w-[82vw] max-w-sm border-r border-slate-800/90 bg-slate-950/95 shadow-[0_0_40px_rgba(15,23,42,0.55)] backdrop-blur-xl md:hidden"
             >
               <div className="nav-drawer-surface absolute inset-0" />
 
