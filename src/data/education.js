@@ -7,11 +7,11 @@ export const education = [
     location: 'Fès, Morocco',
     highlight: 'Current focus',
     summary:
-      'Currently pursuing a specialized engineering path focused on embedded systems, artificial intelligence, and intelligent system design.',
+      'Currently pursuing a specialized engineering path focused on Embedded Systems, Artificial Intelligence, and Intelligent System Design.',
     description:
-      'My current academic journey is centered on the integration of embedded systems, intelligent hardware, and AI-driven problem solving for real-world engineering applications.',
+      'My current academic journey is centered on the integration of Embedded Systems, Intelligent hardware, and AI-driven problem solving for real-world engineering applications.',
     details:
-      'At ENSAF, I am building a strong foundation in embedded computing, signal processing, machine learning, and intelligent system architectures. The program emphasizes technical depth, research-oriented thinking, and the development of practical solutions that connect software, hardware, and data-driven intelligence.',
+      'At ENSAF, I am building a strong foundation in Embedded Computing, SoC, AI, and intelligent system architectures. The program emphasizes technical depth, research-oriented thinking, and the development of practical solutions that connect software, hardware, and data-driven intelligence.',
   },
   {
     id: 'senior-high',
@@ -23,9 +23,9 @@ export const education = [
     summary:
       'Completed senior secondary education in a science-focused environment and built a strong academic foundation for engineering study.',
     description:
-      'During this stage, I strengthened my foundation in the sciences alongside developing an interest in analytical thinking, systems understanding, and technical problem solving.',
+      'During this stage, I strengthened my foundation in the sciences alongside developing an interest in analytical thinking, strengthening foundation, and technical problem solving.',
     details:
-      'The science track helped me develop a disciplined approach to learning and sharpened my understanding of mathematics, physics, and the scientific method. This period was pivotal in confirming my ambition to pursue engineering and technology-focused study.',
+      'The science field helped me develop a disciplined approach to learning and sharpened my understanding of mathematics, physics, and the scientific method. This period was pivotal in confirming my ambition to pursue engineering and technology-focused study.',
   },
   {
     id: 'junior-school',
@@ -43,7 +43,7 @@ export const education = [
   },
   {
     id: 'primary-school',
-    institution: 'Longman Memorial Kindergarten and Primary School',
+    institution: 'Longman Memorial Methodist Kindergarten and Primary School',
     program: 'Primary Education',
     period: '2008 – 2014',
     location: 'Brikama, The Gambia',
