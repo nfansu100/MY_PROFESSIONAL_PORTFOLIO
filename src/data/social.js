@@ -1,3 +1,15 @@
+import { areasOfInterest } from './about'
+
+const email = 'nfansubarrow300@gmail.com'
+
+export const contactInfo = {
+  email,
+  phone: '+212 697 999 438',
+  location: 'Fès, Morocco',
+  availability: 'Open to remote and on-site opportunities',
+  interests: areasOfInterest,
+}
+
 export const socialLinks = [
   {
     label: 'GitHub',
@@ -5,13 +17,13 @@ export const socialLinks = [
     type: 'github',
   },
   {
-    label: 'Portfolio',
-    href: 'https://nfansu100.github.io/portfolio/',
-    type: 'portfolio',
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/nfansu-o-barrow-326397304/',
+    type: 'linkedin',
   },
   {
-    label: "LinkedLn",
-    href: "https://www.linkedin.com/in/nfansu-o-barrow-326397304/",
-    type: "linkedLn"
-  }
+    label: 'Email',
+    href: `mailto:${email}`,
+    type: 'email',
+  },
 ]
