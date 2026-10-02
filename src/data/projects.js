@@ -6,12 +6,14 @@ import vehicleTracking from '../assets/videos/demos/vehicleTracking.mp4'
 import volumeGesture from '../assets/videos/demos/volumeGesture.mp4'
 import wifiWebServer from '../assets/videos/demos/wifiWebServer.mp4'
 
-import chuImage from '../assets/images/projects/chuImage.png'
-import chuProject from '../assets/images/projects/chu.png'
-import embeddedOne from '../assets/images/projects/embedded1.jpg'
-import embeddedTwo from '../assets/images/projects/embedded2.jpg'
-import projectV2 from '../assets/images/projects/v2.jpg'
-import vehicleProjectImg from '../assets/images/projects/vehicle_project_img.jpg'
+import buildroot_linux from '../assets/images/projects/buildroot_linux.png'
+import esp32_web_server from '../assets/images/projects/esp32_web_server.png'
+import hand_tracking from '../assets/images/projects/hand_tracking.png'
+import vehicle_tracking_counter from '../assets/images/projects/vehicle_tracking_counter.png'
+import volume_tracking from '../assets/images/projects/volume_tracking.png'
+import vehicle_management from '../assets/images/projects/vehicle_management.png'
+
+
 
 export const projects = [
   {
@@ -38,7 +40,7 @@ export const projects = [
     },
     technologies: ['Python', 'OpenCV', 'Computer Vision', 'Tracking'],
     featured: true,
-    image: vehicleProjectImg,
+    image: vehicle_tracking_counter,
     demo: vehicleTracking,
     github: '#',
   },
@@ -66,7 +68,7 @@ export const projects = [
     },
     technologies: ['Python', 'OpenCV', 'Gesture Recognition', 'Vision'],
     featured: true,
-    image: projectV2,
+    image: hand_tracking,
     demo: handTrackingGesture,
     github: '#',
   },
@@ -94,7 +96,7 @@ export const projects = [
     },
     technologies: ['Python', 'OpenCV', 'Computer Vision', 'Automation'],
     featured: true,
-    image: projectV2,
+    image: volume_tracking,
     demo: volumeGesture,
     github: '#',
   },
@@ -122,66 +124,69 @@ export const projects = [
     },
     technologies: ['ESP32', 'Wi-Fi', 'Embedded Systems', 'Web Server'],
     featured: false,
-    image: embeddedOne,
+    image: esp32_web_server,
     demo: wifiWebServer,
     github: '#',
   },
-  {
-    title: 'Obstacle Detection with ESP32',
-    category: 'Embedded Systems',
-    summary:
-      'Compact obstacle sensing solution built around ESP32 hardware and real-time detection logic for embedded applications.',
-    description:
-      'A hardware-focused embedded project centered on sensing and detecting obstacles in a compact, practical system design.',
-    details: {
-      overview:
-        'This project focuses on detecting physical obstructions in a compact embedded system using sensor-driven logic and real-time responses.',
-      objective:
-        'The objective was to design a practical obstacle-detection system demonstrating how embedded sensing can support simple but useful autonomous behavior.',
-      approach:
-        'The implementation combines sensor integration with embedded decision logic to detect nearby obstacles and respond appropriately to the environment.',
-      features: [
-        'Sensor-based obstacle detection',
-        'Embedded decision logic',
-        'Compact real-time hardware workflow',
-      ],
-      outcome:
-        'The solution demonstrates a foundational embedded sensing pattern that can be extended for robotics, automation, and safety-oriented systems.',
-    },
-    technologies: ['ESP32', 'Sensors', 'Embedded Systems', 'IoT'],
-    featured: false,
-    image: embeddedTwo,
-    demo: obstacleDetection,
-    github: '#',
-  },
-  {
-    title: 'LED Control with ESP32',
-    category: 'IoT',
-    summary:
-      'Embedded IoT control project showcasing microcontroller-based lighting interfaces and device interaction patterns.',
-    description:
-      'A simple embedded control project demonstrating microcontroller-driven device interaction and remote control concepts.',
-    details: {
-      overview:
-        'This project demonstrates how an ESP32 can control an LED-based output while serving as a simple embedded control interface.',
-      objective:
-        'The goal was to build a clear example of microcontroller-based command and control using an embedded hardware platform.',
-      approach:
-        'The system uses embedded logic to handle output commands and device interaction patterns in a lightweight, practical architecture.',
-      features: [
-        'ESP32 output control',
-        'Embedded device interaction',
-        'Simple IoT control pattern',
-      ],
-      outcome:
-        'The project provides a straightforward example of how embedded applications can evolve from simple control logic into broader connected systems.',
-    },
-    technologies: ['ESP32', 'Embedded C', 'IoT', 'Control'],
-    featured: false,
-    image: embeddedOne,
-    demo: ledControl,
-    github: '#',
-  },
+
+  // {
+  //   title: 'Obstacle Detection with ESP32',
+  //   category: 'Embedded Systems',
+  //   summary:
+  //     'Compact obstacle sensing solution built around ESP32 hardware and real-time detection logic for embedded applications.',
+  //   description:
+  //     'A hardware-focused embedded project centered on sensing and detecting obstacles in a compact, practical system design.',
+  //   details: {
+  //     overview:
+  //       'This project focuses on detecting physical obstructions in a compact embedded system using sensor-driven logic and real-time responses.',
+  //     objective:
+  //       'The objective was to design a practical obstacle-detection system demonstrating how embedded sensing can support simple but useful autonomous behavior.',
+  //     approach:
+  //       'The implementation combines sensor integration with embedded decision logic to detect nearby obstacles and respond appropriately to the environment.',
+  //     features: [
+  //       'Sensor-based obstacle detection',
+  //       'Embedded decision logic',
+  //       'Compact real-time hardware workflow',
+  //     ],
+  //     outcome:
+  //       'The solution demonstrates a foundational embedded sensing pattern that can be extended for robotics, automation, and safety-oriented systems.',
+  //   },
+  //   technologies: ['ESP32', 'Sensors', 'Embedded Systems', 'IoT'],
+  //   featured: false,
+  //   image: embeddedTwo,
+  //   demo: obstacleDetection,
+  //   github: '#',
+  // },
+  
+  // {
+  //   title: 'LED Control with ESP32',
+  //   category: 'IoT',
+  //   summary:
+  //     'Embedded IoT control project showcasing microcontroller-based lighting interfaces and device interaction patterns.',
+  //   description:
+  //     'A simple embedded control project demonstrating microcontroller-driven device interaction and remote control concepts.',
+  //   details: {
+  //     overview:
+  //       'This project demonstrates how an ESP32 can control an LED-based output while serving as a simple embedded control interface.',
+  //     objective:
+  //       'The goal was to build a clear example of microcontroller-based command and control using an embedded hardware platform.',
+  //     approach:
+  //       'The system uses embedded logic to handle output commands and device interaction patterns in a lightweight, practical architecture.',
+  //     features: [
+  //       'ESP32 output control',
+  //       'Embedded device interaction',
+  //       'Simple IoT control pattern',
+  //     ],
+  //     outcome:
+  //       'The project provides a straightforward example of how embedded applications can evolve from simple control logic into broader connected systems.',
+  //   },
+  //   technologies: ['ESP32', 'Embedded C', 'IoT', 'Control'],
+  //   featured: false,
+  //   image: embeddedOne,
+  //   demo: ledControl,
+  //   github: '#',
+  // },
+
   {
     title: 'Vehicle Management System at CHU Hospital',
     category: 'Applied Vision',
@@ -206,7 +211,7 @@ export const projects = [
     },
     technologies: ['Computer Vision', 'Python', 'Web App', 'Operations'],
     featured: true,
-    image: chuProject,
+    image: vehicle_management,
     demo: vehicleManagement,
     github: '#',
   },
@@ -234,7 +239,7 @@ export const projects = [
     },
     technologies: ['Raspberry Pi', 'Buildroot', 'Embedded Linux', 'Linux'],
     featured: false,
-    image: chuImage,
+    image: buildroot_linux,
     demo: '#',
     github: '#',
   },

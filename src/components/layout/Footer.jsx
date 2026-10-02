@@ -35,11 +35,11 @@ export default function Footer() {
         <section aria-labelledby="footer-identity-heading" className="max-w-sm">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-200">Portfolio</p>
           <h2 id="footer-identity-heading" className="mt-3 text-xl font-semibold text-white">
-            Nfansu O Barrow
+            Nfansu O. Barrow
           </h2>
           <p className="mt-1 text-sm font-medium text-cyan-100/80">Embedded Systems &amp; AI Engineer</p>
           <p className="mt-4 max-w-xs text-sm leading-6 text-slate-400">
-            A portfolio of embedded systems, robotics, computer vision, and applied AI work.
+            A portfolio of Embedded Systems & AI Journey.
           </p>
         </section>
 
