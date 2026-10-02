@@ -1,5 +1,16 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Code2, Cpu, CircuitBoard } from 'lucide-react'
+import {
+  Code2,
+  Cpu,
+  CircuitBoard,
+  Terminal,
+  Workflow,
+  Eye,
+  Server,
+  Shield,
+  Wrench,
+  Users,
+} from 'lucide-react'
 import SectionHeading from '../common/SectionHeading'
 import Badge from '../common/Badge'
 import { skills } from '../../data/skills'
@@ -8,6 +19,13 @@ const skillIcons = {
   programming: Code2,
   protocols: CircuitBoard,
   'embedded-platforms': Cpu,
+  'embedded-linux-rtos': Terminal,
+  'modeling-simulation': Workflow,
+  'ai-computer-vision': Eye,
+  'web-backend': Server,
+  standards: Shield,
+  tools: Wrench,
+  'soft-skills': Users,
 }
 
 export default function Skills() {

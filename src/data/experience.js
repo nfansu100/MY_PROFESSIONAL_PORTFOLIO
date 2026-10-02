@@ -1,5 +1,50 @@
 export const experience = [
   {
+    id: 'moroccan-alpr',
+    title: 'EMSYDEV Intern',
+    organization: 'EMSYDEV (TANGIER)',
+    period: 'Two months internship',
+    location: 'Remote Intern',
+    summary: 'Completed an internship which focuses on developement of Vehicle Detection model & ALPR model for EdgeVision plateform.',
+
+    description:
+      'During my summer internship, I worked on an end-to-end ALPR pipeline designed to detect vehicles, localize license plates, and recognize Moroccan license plate characters. The project combined deep learning, computer vision, OCR, and embedded AI deployment. I trained and evaluated object detection and recognition models, converted trained models to ONNX, and investigated FP32, FP16, and INT8 optimization strategies. I subsequently deployed and evaluated the complete inference pipeline on a Raspberry Pi 4, analyzing performance and computational efficiency to better understand the challenges of running AI models on edge hardware.',
+
+    responsibilities: [
+      'Developed a YOLOv8n-based detection system to identify vehicles, including cars, buses, motorcycles, and trucks, alongside their license plates.',
+      'Implemented and evaluated a YOLO11-based OCR pipeline for recognizing Moroccan license plate characters, supported by dataset preparation and validation.',
+      'Optimized deep learning models for edge inference through ONNX conversion and FP32, FP16, and INT8 precision experiments, evaluating recognition accuracy using plate accuracy, character accuracy, and character error rate.',
+      'Deployed the complete two-stage ALPR pipeline on a Raspberry Pi 4 using ONNX Runtime and conducted comparative experiments to assess inference speed, recognition performance, and computational efficiency.'
+    ],
+
+    impact:
+      'Delivered an end-to-end Moroccan ALPR prototype running on a Raspberry Pi 4. The project provided practical experience in deploying computer vision models on resource-constrained hardware, evaluating recognition accuracy, and investigating the trade-offs between inference performance and model precision.',
+
+    technologies: [
+      'Python',
+      'PyTorch',
+      'ONNX Runtime',
+      'YOLO11',
+      'ONNX',
+      'YOLOv8',
+      'Computer Vision',
+      'OCR',
+      'Edge AI',
+      'Raspberry Pi 4',
+    ],
+
+    highlights: [
+      'End-to-end vehicle and license plate recognition',
+      'Moroccan license plate character recognition',
+      'FP32, FP16, and INT8 model optimization',
+      'ONNX-based edge deployment',
+      'Raspberry Pi 4 CPU inference',
+      'Performance and accuracy evaluation',
+    ],
+  },
+
+
+  {
     id: 'chu-intern',
     title: 'CHU Intern',
     organization: 'Centre Hospitalier Universitaire',
