@@ -12,10 +12,41 @@ import hand_tracking from '../assets/images/projects/hand_tracking.png'
 import vehicle_tracking_counter from '../assets/images/projects/vehicle_tracking_counter.png'
 import volume_tracking from '../assets/images/projects/volume_tracking.png'
 import vehicle_management from '../assets/images/projects/vehicle_management.png'
-
+import vehicle_alpr from '../assets/images/projects/vehicle_alpr.png'
 
 
 export const projects = [
+
+    {
+    title: 'EdgeVision ALPR – Moroccan License Plate Recognition',
+    category: 'Embedded + AI',
+    summary:
+      'Two-stage license plate recognition system for Moroccan plates, optimized to run on a Raspberry Pi 4 using CPU-only inference.',
+    description:
+      'An embedded ALPR pipeline built during a PFA internship at EMSYDEV for the EdgeVision video-analytics platform. It detects vehicles and plates, then reads the Arabic and Latin characters on each plate directly on edge hardware.',
+    details: {
+      overview:
+        'The system detects vehicles and license plates in a frame, crops the plate, and recognizes its text using character detection. Moroccan plates mix digits, Arabic letters, and a separating space, which general-purpose OCR engines handle poorly out of the box.',
+      objective:
+        'Build and benchmark an ALPR system that delivers usable accuracy and latency on a low-power Raspberry Pi 4 with no GPU or cloud dependency.',
+      approach:
+        'Four detection models (YOLOv8n, YOLO11n, RT-DETR) were trained on a custom five-class Moroccan dataset, and four OCR approaches (EasyOCR, PaddleOCR, YOLO11-OCR, LPRNet) were fine-tuned and compared. The selected models were exported to ONNX, converted to FP16 and INT8, and validated on the Raspberry Pi itself rather than on GPU results alone.',
+      features: [
+        'Detection: YOLOv8n (100 epochs, FP16) with 0.777 mAP50-95 on the Pi',
+        'OCR: YOLO11 character detection (INT8) with 93.24% character accuracy and a 3.03 MB model',
+        'Full two-stage pipeline running at about 1.08 FPS on CPU only',
+        'Pre-detection resizing and 2× plate-crop enlargement to cut latency and empty OCR results',
+      ],
+      outcome:
+        'The best-performing precision on GPU was not the best on the Raspberry Pi: FP16 won for detection and INT8 for OCR. The validated pipeline reaches about 1.08 FPS, and the work includes an exploratory ncnn track toward a future Jetson/TensorRT target.',
+    },
+    technologies: ['Python', 'YOLOv8', 'YOLO11', 'ONNX Runtime', 'OpenCV', 'Raspberry Pi', 'Quantization'],
+    featured: true,
+    image: vehicle_alpr,
+    demo: '#',
+    github: '#',
+  },
+
   {
     title: 'Vehicle Tracking Project',
     category: 'Computer Vision',
@@ -72,6 +103,7 @@ export const projects = [
     demo: handTrackingGesture,
     github: '#',
   },
+
   {
     title: 'Volume Gesture Control',
     category: 'Embedded + AI',
@@ -100,6 +132,7 @@ export const projects = [
     demo: volumeGesture,
     github: '#',
   },
+
   {
     title: 'Wi-Fi Web Server with ESP32',
     category: 'Embedded Systems',
