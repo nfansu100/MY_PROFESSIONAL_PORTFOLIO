@@ -168,7 +168,7 @@ export default function Navbar() {
             Nfansu Barrow
           </a>
 
-          <nav className="relative hidden items-center md:flex" aria-label="Main navigation">
+          <nav className="relative hidden items-center lg:flex" aria-label="Main navigation">
             <ul className="relative flex items-center gap-1 rounded-full border border-cyan-500/15 bg-slate-900/60 p-1.5 shadow-[inset_0_1px_0_rgba(148,163,184,0.08)] backdrop-blur-xl">
               {navigation.map((item) => {
                 const isActive = activeSection === item.id
@@ -201,7 +201,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700/80 bg-slate-900/75 text-slate-200 shadow-[0_0_0_1px_rgba(15,23,42,0.4)] transition-all duration-200 hover:border-cyan-400/50 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[0.98] md:hidden"
+            className="relative z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700/80 bg-slate-900/75 text-slate-200 shadow-[0_0_0_1px_rgba(15,23,42,0.4)] transition-all duration-200 hover:border-cyan-400/50 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[0.98] lg:hidden"
             onClick={onMenuToggle}
             aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isOpen}
@@ -223,7 +223,7 @@ export default function Navbar() {
             <motion.button
               type="button"
               aria-label="Close navigation overlay"
-              className="fixed inset-0 z-40 bg-slate-950/65 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-slate-950/65 backdrop-blur-sm lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -237,7 +237,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', stiffness: 280, damping: 28 }}
-              className="fixed left-0 top-0 z-50 h-full w-[82vw] max-w-sm border-r border-slate-800/90 bg-slate-950/95 shadow-[0_0_40px_rgba(15,23,42,0.55)] backdrop-blur-xl md:hidden"
+              className="fixed left-0 top-0 z-50 h-full w-[82vw] max-w-sm border-r border-slate-800/90 bg-slate-950/95 shadow-[0_0_40px_rgba(15,23,42,0.55)] backdrop-blur-xl lg:hidden"
             >
               <div className="nav-drawer-surface absolute inset-0" />
 

@@ -17,6 +17,9 @@ dist-ssr
 # Generated certificate preview files
 src/assets/documents/certificates/*_page-*.jpg
 
+# Local QA reports
+lighthouse-report.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
