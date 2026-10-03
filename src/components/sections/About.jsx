@@ -109,10 +109,119 @@ function ListDialog({ content, onClose, reduceMotion }) {
   )
 }
 
+function CVPreviewDialog({ cv, onClose, reduceMotion }) {
+  const dialogRef = useRef(null)
+  const closeTimerRef = useRef(null)
+  const closingRef = useRef(false)
+  const [isClosing, setIsClosing] = useState(false)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!cv || !dialog) return undefined
+
+    closingRef.current = false
+    setIsClosing(false)
+    if (!dialog.open) dialog.showModal()
+
+    return () => {
+      window.clearTimeout(closeTimerRef.current)
+      if (dialog.open) dialog.close()
+    }
+  }, [cv])
+
+  const requestClose = () => {
+    if (closingRef.current) return
+    closingRef.current = true
+    setIsClosing(true)
+    closeTimerRef.current = window.setTimeout(onClose, reduceMotion ? 0 : 160)
+  }
+
+  return (
+    <AnimatePresence>
+      {cv ? (
+        <motion.dialog
+          key={cv.language}
+          ref={dialogRef}
+          id="cv-preview-dialog"
+          aria-labelledby="cv-preview-title"
+          aria-describedby="cv-preview-description"
+          onCancel={(event) => {
+            event.preventDefault()
+            requestClose()
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') {
+              event.preventDefault()
+              requestClose()
+            }
+          }}
+          onClick={(event) => {
+            if (event.target === dialogRef.current) requestClose()
+          }}
+          initial={{ opacity: 0, y: 8, scale: 0.99 }}
+          animate={
+            isClosing
+              ? { opacity: 0, y: 8, scale: 0.99 }
+              : { opacity: 1, y: 0, scale: 1 }
+          }
+          exit={{ opacity: 0, y: 8, scale: 0.99 }}
+          transition={{ duration: reduceMotion ? 0 : 0.16, ease: 'easeOut' }}
+          className="m-auto h-[min(92dvh,64rem)] max-h-[calc(100dvh-1rem)] w-[calc(100%-1rem)] max-w-6xl overflow-hidden rounded-lg border border-slate-700 bg-slate-950 p-0 text-slate-100 shadow-2xl backdrop:bg-slate-950/80 backdrop:backdrop-blur-[2px]"
+        >
+          <div className="flex h-full min-h-0 flex-col">
+            <header className="flex shrink-0 items-start justify-between gap-4 border-b border-slate-800 px-4 py-3 sm:px-6 sm:py-4">
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">
+                  Curriculum Vitae
+                </p>
+                <h2 id="cv-preview-title" className="mt-1 text-lg font-semibold text-white sm:text-xl">
+                  {cv.language} CV
+                </h2>
+                <p id="cv-preview-description" className="mt-1 text-xs text-slate-400 sm:text-sm">
+                  Use the document viewer to scroll through the CV.
+                </p>
+              </div>
+              <button
+                type="button"
+                autoFocus
+                onClick={requestClose}
+                aria-label="Close CV preview"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-slate-700 text-slate-300 transition-colors hover:border-slate-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            </header>
+            <div className="min-h-0 flex-1 overflow-hidden bg-slate-900">
+              <iframe
+                src={cv.url}
+                title={`${cv.language} curriculum vitae PDF`}
+                className="block h-full w-full border-0"
+              />
+            </div>
+            <footer className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-slate-800 px-4 py-3 sm:px-6">
+              <p className="min-w-0 break-all text-xs text-slate-400">{cv.fileName}</p>
+              <a
+                href={cv.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-md bg-cyan-300 px-3 py-2 text-sm font-semibold text-slate-950 transition-colors hover:bg-cyan-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+              >
+                Open CV in New Tab <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </footer>
+          </div>
+        </motion.dialog>
+      ) : null}
+    </AnimatePresence>
+  )
+}
+
 export default function About() {
   const sectionRef = useRef(null)
+  const cvTriggerRef = useRef(null)
   const reduceMotion = useReducedMotion()
   const [activeList, setActiveList] = useState(null)
+  const [activeCv, setActiveCv] = useState(null)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
@@ -121,7 +230,11 @@ export default function About() {
   const gridOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.28, 0.72, 0.72, 0.28])
 
   useEffect(() => {
-    if (!activeList) return undefined
+    if (!activeCv) cvTriggerRef.current?.focus()
+  }, [activeCv])
+
+  useEffect(() => {
+    if (!activeList && !activeCv) return undefined
 
     const body = document.body
     const previousOverflow = body.style.overflow
@@ -135,7 +248,7 @@ export default function About() {
       body.style.overflow = previousOverflow
       body.style.paddingRight = previousPaddingRight
     }
-  }, [activeList])
+  }, [activeList, activeCv])
 
   const openList = (type) => {
     setActiveList(
@@ -307,14 +420,18 @@ export default function About() {
                   <li key={cv.language} className="flex min-w-0 flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 py-2.5 last:border-0 xl:gap-3">
                     <span className="text-sm font-medium text-slate-200">{cv.language}</span>
                     <div className="flex flex-wrap items-center gap-2">
-                      <a
-                        href={cv.url}
-                        target="_blank"
-                        rel="noreferrer"
+                      <button
+                        type="button"
+                        aria-haspopup="dialog"
+                        aria-controls="cv-preview-dialog"
+                        onClick={(event) => {
+                          cvTriggerRef.current = event.currentTarget
+                          setActiveCv(cv)
+                        }}
                         className="inline-flex min-h-9 items-center gap-1.5 rounded-md border border-slate-600 px-3 py-2 text-xs font-semibold text-slate-200 transition-colors hover:border-cyan-300/50 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
                       >
                         View CV <ArrowUpRight size={14} aria-hidden="true" />
-                      </a>
+                      </button>
                       <a
                         href={cv.url}
                         download={cv.fileName}
@@ -332,6 +449,11 @@ export default function About() {
       <ListDialog
         content={activeList}
         onClose={closeList}
+        reduceMotion={reduceMotion}
+      />
+      <CVPreviewDialog
+        cv={activeCv}
+        onClose={() => setActiveCv(null)}
         reduceMotion={reduceMotion}
       />
     </section>
